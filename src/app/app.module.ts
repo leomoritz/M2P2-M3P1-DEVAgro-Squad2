@@ -3,31 +3,30 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserNavBarComponent } from './_components/user-nav-bar/user-nav-bar.component';
-import { ButtonComponent } from './_components/button/button.component';
-import { LoginComponent } from './_views/login/login.component';
-import { ShowWorkerComponent } from './_components/show-worker/show-worker.component';
-import { GrainFormComponent } from './_components/grain/grain-form/grain-form.component';
-import { SidebarComponent } from './_components/sidebar/sidebar.component';
-import { CompanyFormComponent } from './_views/company-form/company-form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from './_shared/shared.module';
-import { FarmFormComponent } from './_components/farm/farm-form/farm-form.component';
-import { GrainListComponent } from './_components/grain/grain-list/grain-list.component';
-import { FarmListComponent } from './_components/farm/farm-list/farm-list.component';
-import { EmployeeFormComponent } from './_components/employee/employee-form/employee-form.component';
-import { HomeComponent } from './_components/home/home/home.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
-import { FarmTableComponent } from './_components/farm-table/farm-table.component';
-import { ListComponent } from './_components/show-worker/list/list.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
-import { Error404Component } from './_views/error404/error404.component';
-import { GrainEditComponent } from './_views/grain/grain-edit/grain-edit.component';
-import { EmployeeEditComponent } from './_components/employee/employee-edit/employee-edit/employee-edit.component';
+import { ButtonComponent } from './components/button/button.component';
+import { HomeComponent } from './components/home/home.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { UserNavBarComponent } from './components/user-nav-bar/user-nav-bar.component';
+import { CompanyFormComponent } from './model/views/company/company-form/company-form.component';
+import { EmployeeFormComponent } from './model/views/employee/employee-form/employee-form.component';
+import { FarmFormComponent } from './model/views/farm/farm-form/farm-form.component';
+import { FarmListComponent } from './model/views/farm/farm-list/farm-list.component';
+import { FarmTableComponent } from './components/farm/farm-table/farm-table.component';
+import { GrainEditComponent } from './model/views/grain/grain-edit/grain-edit.component';
+import { GrainFormComponent } from './model/views/grain/grain-form/grain-form.component';
+import { GrainListComponent } from './model/views/grain/grain-list/grain-list.component';
+import { SharedModule } from './shared/shared.module';
+import { Error404Component } from './views/error404/error404.component';
+import { LoginComponent } from './views/login/login.component';
+import { EmployeeEditComponent } from './model/views/employee/employee-edit/employee-edit.component';
+import { EmployeeListComponent } from './model/views/employee/employee-list/employee-list.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -38,7 +37,6 @@ const maskConfig: Partial<IConfig> = {
     ButtonComponent,
     LoginComponent,
     UserNavBarComponent,
-    ShowWorkerComponent,
     GrainFormComponent,
     SidebarComponent,
     FarmFormComponent,
@@ -48,10 +46,10 @@ const maskConfig: Partial<IConfig> = {
     EmployeeFormComponent,
     HomeComponent,
     FarmTableComponent,
-    ListComponent,
     Error404Component,
     GrainEditComponent,
     EmployeeEditComponent,
+    EmployeeListComponent
   ],
   imports: [
     BrowserModule,
