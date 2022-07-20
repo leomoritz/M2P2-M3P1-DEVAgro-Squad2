@@ -1,0 +1,137 @@
+.container-workers {
+  background-color: var(--bg-gray-color);
+  margin-left: 12vw;
+  height: 110vh;
+}
+
+.titulo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.page {
+  margin-left: 3rem;
+
+}
+
+.name {
+  font-size: 1.5rem;
+  width: 50vw;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.worker {
+  background-color: white;
+  height: auto;
+  max-width: 82vw;
+  margin-top: 3rem;
+  border: 1px solid var(--main-color);
+  border-radius: 5px;
+}
+
+.tittleTable {
+  height: 10vh;
+  width: 76vw;
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  justify-content: space-between;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  width: 30%;
+}
+
+#fa-arrow-down,
+#fa-filter {
+  margin-right: 1rem;
+  color: #c5c7cd;
+}
+
+.notEmployee {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notEmployee span {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+}
+
+.img {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.tableMaterial {
+  color: #9fa2b4;
+  height: auto;
+}
+
+.btn-include-grain {
+  width: 75vw;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-include-grain > button {
+  background-color: var(--main-color);
+  border-radius: 50%;
+}
+
+.paginator {
+  margin-right: 4rem;
+  color: #9fa2b4;
+}
+
+#buttonsTable {
+  border-radius: 50px;
+}
+
+::ng-deep .mat-paginator-page-size {
+  opacity: 0;
+}
+
+::ng-deep .mat-icon-button {
+  background-color: white;
+}
+
+::ng-deep tbody {
+  border: #dfe0eb;
+}
+
+ ::ng-deep td.mat-cell:first-of-type {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.infoUser {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.infoUser p {
+  color: #0e1d8e;
+}
+
+.farmUser p {
+  color: #0e1d8e;
+}
+
