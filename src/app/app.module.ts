@@ -27,6 +27,20 @@ import { Error404Component } from './views/error404/error404.component';
 import { LoginComponent } from './views/login/login.component';
 import { EmployeeEditComponent } from './model/views/employee/employee-edit/employee-edit.component';
 import { EmployeeListComponent } from './model/views/employee/employee-list/employee-list.component';
+import { ButtonModule } from 'primeng/button';
+import { PasswordModule } from 'primeng/password';
+import { InputTextModule } from 'primeng/inputtext';
+import {AccordionModule} from 'primeng/accordion';
+import {MenuItem, MessageService} from 'primeng/api';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {InputMaskModule} from 'primeng/inputmask';
+import {DropdownModule} from 'primeng/dropdown';
+import {CalendarModule} from 'primeng/calendar';
+import {FileUploadModule} from 'primeng/fileupload';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {InputSwitchModule} from 'primeng/inputswitch';
+import {ToastModule} from 'primeng/toast';
+import {InputNumberModule} from 'primeng/inputnumber';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -49,7 +63,7 @@ const maskConfig: Partial<IConfig> = {
     Error404Component,
     GrainEditComponent,
     EmployeeEditComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,9 +77,22 @@ const maskConfig: Partial<IConfig> = {
     NgxMaskModule.forRoot(maskConfig), //https://www.npmjs.com/package/ngx-mask (como usar)
     MatTableModule,
     MatPaginatorModule,
-    MatIconModule
+    MatIconModule,
+    ButtonModule,
+    PasswordModule,
+    InputTextModule,
+    AccordionModule,
+    BrowserAnimationsModule,
+    InputMaskModule,
+    DropdownModule,
+    CalendarModule,
+    FileUploadModule,
+    ProgressSpinnerModule,
+    InputSwitchModule,
+    ToastModule,
+    InputNumberModule,
   ],
-  providers: [HttpClient],
+  providers: [HttpClient, MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

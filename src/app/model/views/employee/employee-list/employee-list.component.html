@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource">
+        <table mat-table [dataSource]="dataSource" *ngIf="dataSource; else loading">
           <ng-container matColumnDef="name">
             <th class="tableMaterial" mat-header-cell *matHeaderCellDef>
               Detalhe dos Funcionários
@@ -25,7 +25,7 @@
               />
               <div class="infoUser">
                 {{ element.name }}
-                <p>Cadastrado em {{ element.hiringDate }}</p>
+                <p>Cadastrado em {{ element.hiringDate | mask: "99/99/9999" }}</p>
               </div>
             </td>
           </ng-container>
@@ -96,7 +96,11 @@
 
         </table>
 
-        <div class="btn-include-grain">
+        <ng-template #loading>
+          <p-progressSpinner class="loading"></p-progressSpinner>
+        </ng-template>
+
+        <div class="btn-include-employee">
           <button
             type="button"
             class="btn btn-success btn-lg me-4 mt-4 mb-4"

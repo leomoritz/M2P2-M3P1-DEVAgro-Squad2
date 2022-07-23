@@ -1,70 +1,132 @@
 <app-sidebar></app-sidebar>
 <app-user-nav-bar [menuName]="menuName"></app-user-nav-bar>
 <div class="container-form">
-    <div class="col-12 col-md-12 col-lg-6 col-xl-6">
-        <div class="mb-5 mt-4 pb-5 ms-4">
-          <form class="needs-validation" (ngSubmit)="saveNewEmployee()" [formGroup]="employeeForm" #formDir="ngForm"
-            [ngClass]="{'was-validated' : employeeForm.invalid && formDir.submitted && !formSended}">
-                <div class="form-employee">
-                  <div class="form-group mt-4 me-4 ms-4">
-                    <label for="name-employee">NOME</label>
-                    <input type="text" class="form-control" id="name-employee" name="name-employee" formControlName="name"
-                        placeholder="Nome" required>
-                    <div *ngIf="name.invalid && formDir.submitted && !formSended">
-                      <small *ngIf="name.errors?.['required']" class="alert-required">O nome do funcionário é obrigatório. </small>
-                    </div>
-                  </div>
-                  <div class="form-group mt-4 me-4 ms-4">
-                    <label for="farm-employee" >FAZENDA</label>
-                    <select class="form-control" id="farm-employee" name="farm-employee" formControlName="farmId" required>
-                      <option selected disabled value="">Selecione a fazenda</option>
-                      <option *ngFor="let farm of farmFromCompany" [value]="farm.id">{{farm.id + ' - ' + farm.name}}</option>
-                    </select>
-                    <div *ngIf="farmId.invalid && formDir.submitted && !formSended">
-                      <small *ngIf="farmId.errors?.['required']" class="alert-required">A fazenda é obrigatória. </small>
-                    </div>
-                  </div>
-                  <div class="form-group mt-4 me-4 ms-4">
-                    <label for="cpf-employee">CPF</label>
-                    <input type="text" class="form-control" id="cpf-employee" name="cpf-employee" formControlName="cpf" [mask]="'000.000.000-99'"
-                        placeholder="CPF" required>
-                    <div *ngIf="cpf.invalid && formDir.submitted && !formSended">
-                      <small *ngIf="cpf.errors?.['pattern']">O CPF precisa corresponder a um formato válido. </small>
-                      <small *ngIf="cpf.errors?.['required']" class="alert-required">O CPF é obrigatório. </small>
-                    </div>
-                  </div>
-                  <div class="form-group mt-4 me-4 ms-4">
-                    <label for="phone-employee">TELEFONE</label>
-                    <input type="text" class="form-control" id="phone-employee" name="phone-employee" formControlName="telephoneNumber" [mask]="'(00)00000-0009'"
-                        placeholder="Telefone" required>
-                    <div *ngIf="telephoneNumber.invalid && formDir.submitted && !formSended">
-                      <small *ngIf="telephoneNumber.errors?.['pattern']">O Telefone precisa corresponder ao formato (XX)12345-1234. </small>
-                      <small *ngIf="telephoneNumber.errors?.['required']" class="alert-required">O telefone é obrigatório. </small>
-                    </div>
-                  </div>
-                  <div class="form-group mt-4 me-4 ms-4">
-                    <label for="occupation-employee">FUNÇÃO PRINCIPAL</label>
-                    <input type="text" class="form-control" id="occupation-employee" name="occupation-employee" formControlName="job"
-                        placeholder="Função principal" required>
-                    <div *ngIf="job.invalid && formDir.submitted && !formSended">
-                      <small *ngIf="job.errors?.['required']" class="alert-required">O cargo é obrigatório. </small>
-                    </div>
-                  </div>
-                  <div class="form-group mt-4 me-4 ms-4">
-                    <label for="active-employee">ATIVO</label>
-                    <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-                    </div>
-                  </div>
+  <div class="col-12 col-md-12 col-lg-6 col-xl-6">
+    <div class="mb-5 mt-4 pb-5 ms-4">
+      <p-toast></p-toast>
+      <p-toast position="top-left" key="tl"></p-toast>
+      <p-toast position="top-center" key="tc"></p-toast>
+      <p-toast position="bottom-center" key="bc"></p-toast>
 
-                </div>
-                <div class="container-btn-register mt-4">
-                    <app-button [text]="btnName" class="btn-register"></app-button>
-                </div>
+      <form
+        class="p-fluid grid"
+        (ngSubmit)="saveNewEmployee()"
+        [formGroup]="employeeForm"
+        #formDir="ngForm"
+      >
+        <div class="form-employee">
+          <div class="field col-12 md:col-4">
+            <span class="p-float-label">
+              <input
+                [ngClass]="{
+                  'ng-invalid ng-dirty':
+                    name.errors && formDir.submitted && !formSended
+                }"
+                type="text"
+                id="inputtext"
+                pInputText
+                name="name-employee"
+                formControlName="name"
+                required
+              />
+              <label for="inputtext">Nome</label>
+            </span>
+          </div>
 
-            </form>
+          <div class="field col-12 md:col-4">
+            <span class="p-float-label">
+              <p-dropdown
+                [ngClass]="{
+                  'ng-invalid ng-dirty':
+                  farmId.errors && formDir.submitted && !formSended
+                }"
+                inputId="dropdown"
+                emptyMessage="Nenhuma fazenda encontrada"
+                [autoDisplayFirst]="false"
+                [options]="farmFromCompany"
+                [showClear]="true"
+                optionGroupLabel="farm"
+                optionLabel="name"
+                optionValue="id"
+                formControlName="farmId"
+                name="farm"
+                [required]="true"
+              ></p-dropdown>
+              <label for="dropdown">Fazenda</label>
+            </span>
+          </div>
 
+          <div class="field col-12 md:col-4">
+            <span class="p-float-label">
+              <input
+                [ngClass]="{
+                  'ng-invalid ng-dirty':
+                    (cpf.errors || cpf.errors?.['pattern']) && formDir.submitted && !formSended
+                }"
+                type="text"
+                id="inputtext"
+                pInputText
+                name="cpf-employee"
+                formControlName="cpf"
+                mask="000.000.000-99"
+                required
+              />
+              <label for="inputtext">CPF</label>
+            </span>
+          </div>
+
+          <div class="field col-12 md:col-4">
+            <span class="p-float-label">
+              <input
+                [ngClass]="{
+                  'ng-invalid ng-dirty':
+                  (telephoneNumber.errors || telephoneNumber.errors?.['pattern']) && formDir.submitted && !formSended
+                }"
+                type="text"
+                id="inputtext"
+                pInputText
+                name="phone-employee"
+                formControlName="telephoneNumber"
+                mask="(00)00000-0009"
+                required
+              />
+              <label for="inputtext">Telefone</label>
+            </span>
+          </div>
+
+          <div class="field col-12 md:col-4">
+            <span class="p-float-label">
+              <input
+                [ngClass]="{
+                  'ng-invalid ng-dirty':
+                    job.errors && formDir.submitted && !formSended
+                }"
+                type="text"
+                id="inputtext"
+                pInputText
+                name="occupation-employee"
+                formControlName="job"
+                required
+              />
+              <label for="inputtext">Função Principal</label>
+            </span>
+          </div>
+
+          <div class="field col-12 md:col-4">
+            <label for="active-employee">ATIVO</label>
+            <div class="flexSwitchCheckChecked">
+              <p-inputSwitch
+                formControlName="status"
+                name="status"
+              ></p-inputSwitch>
+            </div>
+          </div>
         </div>
+        <div class="container-btn-register mt-4">
+          <app-button [text]="btnName" class="btn-register"></app-button>
+        </div>
+      </form>
     </div>
+  </div>
 </div>
 <router-outlet></router-outlet>

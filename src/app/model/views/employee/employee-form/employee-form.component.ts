@@ -9,18 +9,19 @@ import { CompanyService } from 'src/app/services/company/company.service';
 import { EmployeeService } from 'src/app/services/employee/employee.service';
 import { FarmService } from 'src/app/services/farm/farm.service';
 import { AlertService } from 'src/app/shared/alert/alert.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-employee-form',
   templateUrl: './employee-form.component.html',
-  styleUrls: ['./employee-form.component.css']
+  styleUrls: ['./employee-form.component.css'],
 })
 export class EmployeeFormComponent implements OnInit {
   regexCpf: RegExp = /^(\d{3})(\d{3})(\d{3})(\d{2})/;
   regexTel: RegExp = /^(\d{2})(\d{5})(\d{4})/;
   //companyId = localStorage.getItem('companyId');
   employeeForm!: FormGroup;
-  btnName:string = 'CADASTRAR';
+  btnName: string = 'CADASTRAR';
   menuName: string = 'Funcionário';
   formSended: boolean = false;
   requestFinished: boolean = false;
@@ -29,46 +30,46 @@ export class EmployeeFormComponent implements OnInit {
   farmFromCompany: any = [];
   farms: any;
 
-
   constructor(
     private employeeService: EmployeeService,
     private farmService: FarmService,
     private alertService: AlertService,
-    private companyService: CompanyService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.employeeForm = this.getFormConfiguration();
     this.getAllFarmsByCompany();
-
   }
-
 
   getFormConfiguration() {
     return new FormGroup({
       name: new FormControl('', [Validators.required]),
-      cpf: new FormControl('',
-               [Validators.required,
-               Validators.pattern(this.regexCpf)
-               ]),
-      farmId: new FormControl('', [Validators.required]),
-      telephoneNumber: new FormControl('',
-               [Validators.required,
-                Validators.pattern(this.regexTel)
-              ]),
+      cpf: new FormControl('', [
+        Validators.required,
+        Validators.pattern(this.regexCpf),
+      ]),
+      farmId: new FormControl([Validators.required]),
+      telephoneNumber: new FormControl('', [
+        Validators.required,
+        Validators.pattern(this.regexTel),
+      ]),
       companyId: new FormControl(this.getIdCompanyLoggedIn, []),
       status: new FormControl(true, []),
       job: new FormControl('', [Validators.required]),
-      hiringDate: new FormControl(moment().locale('pt-br').format('YYYY-MM-DD'), [])
-
+      hiringDate: new FormControl(
+        moment().locale('pt-br').format('YYYY-MM-DD'),
+        []
+      ),
     });
   }
 
   getAllFarmsByCompany() {
-    this.farmService.getAllFarmsByCompany(localStorage.getItem('companyId')).subscribe((data) => {
-      this.farmFromCompany = data;
-    });
+    this.farmService
+      .getAllFarmsByCompany(localStorage.getItem('companyId'))
+      .subscribe((data) => {
+        this.farmFromCompany = data;
+      });
   }
 
   getFarmsByCompanyId() {
@@ -85,7 +86,6 @@ export class EmployeeFormComponent implements OnInit {
       }
     });
   }
-
 
   get name() {
     return this.employeeForm.get('name')!;
@@ -115,20 +115,44 @@ export class EmployeeFormComponent implements OnInit {
   createNewEmployee(): IEmployee {
     return {
       name: this.name.value,
-      cpf: this.cpf.value.replace(this.regexCpf, "$1.$2.$3-$4"),
+      cpf: this.cpf.value.replace(this.regexCpf, '$1.$2.$3-$4'),
       farmId: this.farmId.value,
-      telephoneNumber: this.telephoneNumber.value.replace(this.regexTel, "($1)$2$3"),
+      telephoneNumber: this.telephoneNumber.value.replace(
+        this.regexTel,
+        '($1)$2$3'
+      ),
       companyId: this.companyId.value,
       status: this.status.value,
       job: this.job.value,
-      hiringDate: this.hiringDate.value
-
+      hiringDate: this.hiringDate.value,
     };
   }
 
   saveNewEmployee() {
     if (this.employeeForm.invalid) {
       this.formSended = false;
+      this.alertService.showError(
+        'Erro',
+        'Existem campos inválidos no formulário.'
+      );
+      return;
+    }
+
+    if (this.cpf.errors?.['pattern']) {
+      this.formSended = false;
+      this.alertService.showError(
+        'Erro',
+        'O formato do CPF informado não é valido! Verifique.'
+      );
+      return;
+    }
+
+    if (this.telephoneNumber.errors?.['pattern']) {
+      this.formSended = false;
+      this.alertService.showError(
+        'Erro',
+        'O formato do telefone informado não é valido! Verifique.'
+      );
       return;
     }
 
@@ -148,10 +172,9 @@ export class EmployeeFormComponent implements OnInit {
             title: '',
             message: 'Funcionário cadastrado com sucesso!',
             typeAlert: SUCCESS,
-
           };
           this.employeeForm.reset();
-          this.router.navigate(['employee/list'])
+          this.router.navigate(['employee/list']);
         },
         error: (error) => {
           this.formSended = false;
@@ -167,15 +190,7 @@ export class EmployeeFormComponent implements OnInit {
       })
       .add(() => {
         this.requestFinished = true;
-        this.alertService.showGenericAlert(this.alertMessage = {
-          title: '',
-            message: 'Funcionário cadastrado com sucesso!',
-            typeAlert: SUCCESS,
-        });
-
+        this.alertService.showGenericAlert(this.alertMessage);
       });
   }
-
-
 }
-

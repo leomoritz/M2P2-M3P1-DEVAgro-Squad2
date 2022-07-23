@@ -1,12 +1,10 @@
 .body-home {
   height: 100vh;
-  background-color: var(--bg-gray-color);
   align-items: center;
 }
 
 .navHome {
   margin-left: 1rem;
-  background-color: var(--bg-gray-color);
 }
 
 .container-body-home {

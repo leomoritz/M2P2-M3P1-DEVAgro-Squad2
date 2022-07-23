@@ -1,7 +1,6 @@
 .container-workers {
-  background-color: var(--bg-gray-color);
   margin-left: 12vw;
-  height: 110vh;
+  height: 120vh;
 }
 
 .titulo {
@@ -24,11 +23,12 @@
 
 .worker {
   background-color: white;
-  height: auto;
+  min-height: 80vh;
   max-width: 82vw;
   margin-top: 3rem;
   border: 1px solid var(--main-color);
   border-radius: 5px;
+  padding: 50px;
 }
 
 .tittleTable {
@@ -84,13 +84,13 @@ table {
   height: auto;
 }
 
-.btn-include-grain {
+.btn-include-employee {
   width: 75vw;
   display: flex;
   justify-content: flex-end;
 }
 
-.btn-include-grain > button {
+.btn-include-employee > button {
   background-color: var(--main-color);
   border-radius: 50%;
 }
@@ -133,5 +133,13 @@ table {
 
 .farmUser p {
   color: #0e1d8e;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  width: 100%;
 }
 

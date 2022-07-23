@@ -2,12 +2,11 @@
   border: 1px solid var(--main-color);
   border-radius: 0.5rem;
   background-color: white;
+  padding: 4%;
 }
 
-input,
-select,
-button {
-  border-color: var(--main-color);
+.field{
+  margin-top: 30px;
 }
 
 .container-form {

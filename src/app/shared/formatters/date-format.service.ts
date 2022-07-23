@@ -12,4 +12,8 @@ export class DateFormatService {
     let nextHarvestDate = new Date(date);
     return nextHarvestDate.toLocaleDateString(this.settingsService.getLocale(), {timeZone: this.settingsService.getTimeZone()});
   }
+
+  convertFromStringToDate(date: string): Date {
+    return new Date(date);
+  }
 }
