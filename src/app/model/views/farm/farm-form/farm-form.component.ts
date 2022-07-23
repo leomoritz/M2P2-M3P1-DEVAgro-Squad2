@@ -16,7 +16,7 @@ import { AlertService } from 'src/app/shared/alert/alert.service';
 export class FarmFormComponent implements OnInit {
   farmForm!: FormGroup;
   btnName: string = 'CADASTRAR';
-  menuName: string = 'Fazenda';
+  menuName: string = 'Cadastro Fazenda';
   formSended: boolean = false;
   requestFinished: boolean = false;
   alertMessage!: IAlert;
@@ -37,11 +37,11 @@ export class FarmFormComponent implements OnInit {
 
   getFormConfiguration() {
     return new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      address: new FormControl('', [Validators.required]),
-      grainId: new FormControl('', [Validators.required]),
-      lastHarvest: new FormControl('', [Validators.required]),
-      stock: new FormControl(0, [Validators.required]),
+      name: new FormControl(null, [Validators.required]),
+      address: new FormControl(null, [Validators.required]),
+      grainId: new FormControl([Validators.required]),
+      lastHarvest: new FormControl(null, [Validators.required]),
+      stock: new FormControl(null, [Validators.required]),
     });
   }
 

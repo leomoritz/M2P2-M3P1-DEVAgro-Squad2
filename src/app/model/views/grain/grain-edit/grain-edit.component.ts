@@ -7,6 +7,7 @@ import { IGrainByCompany } from 'src/app/model/interfaces/grain/igrain-by-compan
 import { FarmService } from 'src/app/services/farm/farm.service';
 import { GrainService } from 'src/app/services/grain/grain.service';
 import { AlertService } from 'src/app/shared/alert/alert.service';
+import { DateFormatService } from 'src/app/shared/formatters/date-format.service';
 import { ERROR, SUCCESS } from 'src/environments/environment';
 
 @Component({
@@ -16,7 +17,7 @@ import { ERROR, SUCCESS } from 'src/environments/environment';
 })
 export class GrainEditComponent implements OnInit {
 
-  menuName: string = 'Editar Grãos';
+  menuName: string = 'Editar Grão';
   public grainForm: any = [];
   formSended: boolean = false;
   alertMessage!: IAlert;
@@ -42,6 +43,7 @@ export class GrainEditComponent implements OnInit {
     private alertService: AlertService,
     private farmService: FarmService,
     private route: ActivatedRoute,
+    private dateFormatService: DateFormatService,
     private redirectRout: Router) { }
 
   ngOnInit() {
@@ -57,10 +59,25 @@ export class GrainEditComponent implements OnInit {
     this.getGrainFarm();
   }
 
+  get name(){
+    return this.grainForm.get('name')!;
+  }
+
+  get nextHarvestDate(){
+    return this.grainForm.get('nextHarvestDate')!;
+  }
+
+  get additionalInformation(){
+    return this.grainForm.get('additionalInformation')!;
+  }
+
+  public convertFromStringToDate(date: any): Date {
+    return this.dateFormatService.convertFromStringToDate(date);
+  }
+
   public updateGrain() {
     if (this.grainForm.valid) {
       this.setNewGrain();
-      console.log(this.newGrain);
 
       try {
         this.rest.updateGrain(this.newGrain, this.grain.id).subscribe({

@@ -15,7 +15,8 @@
 .company-form{
   background-color: var(--white);
   border-radius: 5px 5px 5px 5px;
-  padding: 15px;
+  padding: 20px;
+  height: 90vh;
 }
 
 .needs-validation{

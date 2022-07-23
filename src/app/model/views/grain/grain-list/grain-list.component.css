@@ -17,7 +17,7 @@ table {
 }
 
 .container-table {
-  height: 75vh;
+  height: 70vh;
   width: 100%;
 
 }
@@ -31,6 +31,7 @@ table {
   background-color: white;
   border: 1px solid var(--main-color);
   border-radius: 5px;
+  padding: 3%;
 }
 
 .pagination {

@@ -12,20 +12,19 @@
   width: 58vw;
   height: 95%;
   background-color: white;
-  margin-left: 3rem;
-  margin-right: 3.5rem;
+  padding: 30px;
 }
 
 .container-table > h3 {
   margin-top: 1rem;
   padding: 20px;
   text-align: center;
-  font-weight: bold;
 }
 
 .col-farm,
 .data-col-farm {
   text-align: left;
+
 }
 
 .col-prevision,
@@ -37,10 +36,8 @@
   width: 100%;
 }
 
-.table tr > td {
-  color: var(--text-blue-color);
-  font-weight: bold;
-  padding-top: 10px;
+.table tr td {
+  line-height: 50px;
 }
 
 table .table-rows:hover {
@@ -56,6 +53,6 @@ table tr:hover td {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 75%;
+  height: 50%;
   width: 100%;
 }

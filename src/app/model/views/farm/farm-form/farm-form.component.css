@@ -6,8 +6,10 @@
   width: 100%;
 }
 
-input,
-select,
+.field {
+  margin-top: 30px;
+}
+
 button {
   border-color: var(--main-color);
 }
@@ -16,7 +18,6 @@ button {
   color: var(--main-color);
   display: flex;
   justify-content: center;
-  background-color: var(--bg-gray-color);
   height: 100vh;
 }
 
@@ -62,8 +63,4 @@ button {
 
 .alert-required {
   color: var(--red);
-}
-
-.navFarmForm {
-  background-color: var(--bg-gray-color);
 }

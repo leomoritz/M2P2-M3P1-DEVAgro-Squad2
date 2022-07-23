@@ -17,7 +17,7 @@ import { AlertService } from 'src/app/shared/alert/alert.service';
 export class GrainFormComponent implements OnInit {
 
   btnName: string = 'CADASTRAR';
-  menuName: string = 'Grãos';
+  menuName: string = 'Cadastro Grão';
   public grainForm: any = [];
   formSended: boolean = false;
   alertMessage!: IAlert;

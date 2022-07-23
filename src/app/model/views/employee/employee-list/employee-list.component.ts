@@ -67,7 +67,6 @@ export class EmployeeListComponent implements OnInit {
 
   setUpTable() {
     try {
-      this.listItems.forEach((employee: IEmployeeList) => this.dateFormatService.convertDateToSettingsFormat(employee.hiringDate));
       this.dataSource = new MatTableDataSource<IEmployeeList>(this.listItems);
       this.dataSource.paginator = this.paginator;
     } catch (error) {
@@ -170,7 +169,7 @@ export class EmployeeListComponent implements OnInit {
                 this.objInfos.companyId = this.employees[index1].companyId;
                 this.objInfos.status = this.employees[index1].status;
                 this.objInfos.job = this.employees[index1].job;
-                this.objInfos.hiringDate = this.employees[index1].hiringDate;
+                this.objInfos.hiringDate = this.dateFormatService.convertDateToSettingsFormat(this.employees[index1].hiringDate);
                 this.objInfos.farmName = this.farms[index2].name;
                 this.listItems.push(this.objInfos);
 
