@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MessageService } from 'primeng/api';
 import { IAlert } from 'src/app/interfaces/alert/ialert';
 import {
   ERROR,
@@ -14,7 +13,6 @@ import Swal, { SweetAlertIcon } from 'sweetalert2';
   providedIn: 'root',
 })
 export class AlertService {
-  constructor(private messageService: MessageService) {}
 
   private show(
     titleAlert: string,
@@ -46,46 +44,5 @@ export class AlertService {
 
   public showAlertQuestion(alert: IAlert) {
     this.show(alert.title!, alert.message, QUESTION);
-  }
-
-  showSucess(summary: string, messageDetail: string) {
-    this.messageService.add({
-      severity: 'sucess',
-      summary: summary,
-      detail: messageDetail,
-    });
-  }
-
-  showInfo(summary: string, messageDetail: string) {
-    this.messageService.add({
-      severity: 'info',
-      summary: summary,
-      detail: messageDetail,
-    });
-  }
-
-  showWarn(summary: string, messageDetail: string) {
-    this.messageService.add({
-      severity: 'warn',
-      summary: summary,
-      detail: messageDetail,
-    });
-  }
-
-  showError(summary: string, messageDetail: string) {
-    this.messageService.add({
-      severity: 'error',
-      summary: summary,
-      detail: messageDetail,
-    });
-  }
-
-  showCustom(severity: string, summary: string, messageDetail: string) {
-    this.messageService.add({
-      severity: severity,
-      summary: summary,
-      detail: messageDetail,
-      icon: 'pi-file',
-    });
   }
 }

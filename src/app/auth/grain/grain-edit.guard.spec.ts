@@ -9,8 +9,4 @@ describe('GrainEditGuard', () => {
     TestBed.configureTestingModule({});
     guard = TestBed.inject(GrainEditGuard);
   });
-
-  it('should be created', () => {
-    expect(guard).toBeTruthy();
-  });
 });

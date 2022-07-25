@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppModule } from 'src/app/app.module';
 import { GrainEditComponent } from './grain-edit.component';
 
 describe('GrainEditComponent', () => {
@@ -7,7 +9,9 @@ describe('GrainEditComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GrainEditComponent ]
+      declarations: [ GrainEditComponent ],
+      imports: [AppModule],
+      providers: [HttpClient]
     })
     .compileComponents();
   });
@@ -18,7 +22,5 @@ describe('GrainEditComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+
 });

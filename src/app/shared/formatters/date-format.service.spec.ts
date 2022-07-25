@@ -8,8 +8,4 @@ describe('DateFormatService', () => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(DateFormatService);
   });
-
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
 });

@@ -10,7 +10,4 @@ describe('EmployeeEditGuard', () => {
     guard = TestBed.inject(EmployeeEditGuard);
   });
 
-  it('should be created', () => {
-    expect(guard).toBeTruthy();
-  });
 });

@@ -87,7 +87,6 @@ export class CompanyFormComponent implements OnInit {
     }
     this.newCompany = this.createNewCompany();
     this.registerCompanyIfEmailNotRegistered();
-
   }
 
   createNewCompany(): ICompany {

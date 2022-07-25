@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppModule } from 'src/app/app.module';
 import { GrainFormComponent } from './grain-form.component';
 
 describe('GrainFormComponent', () => {
@@ -7,7 +9,9 @@ describe('GrainFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GrainFormComponent ]
+      declarations: [ GrainFormComponent ],
+      imports: [AppModule],
+      providers: [HttpClient]
     })
     .compileComponents();
   });
@@ -18,7 +22,4 @@ describe('GrainFormComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });
