@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ERROR } from 'src/environments/environment';
 import { IAlert } from 'src/app/interfaces/alert/ialert';
-import { UserServiceService } from 'src/app/services/user/user-service.service';
+import { UserService } from 'src/app/services/user/user.service';
 import { AlertService } from 'src/app/shared/alert/alert.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   alertMessage!: IAlert;
   checkForgotPassword: boolean = false;
 
-  constructor(private userService: UserServiceService, private route: Router, private alertService: AlertService) { }
+  constructor(private userService: UserService, private route: Router, private alertService: AlertService) { }
 
   ngOnInit(): void {
     this.loginFormGroup = this.getFormConfiguration();

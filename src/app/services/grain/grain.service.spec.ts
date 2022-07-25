@@ -9,7 +9,5 @@ describe('GrainService', () => {
     service = TestBed.inject(GrainService);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
+
 });

@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { IAlert } from 'src/app/interfaces/alert/ialert';
 import { IEmployee } from 'src/app/model/interfaces/employee/iemployee';
-import { CompanyService } from 'src/app/services/company/company.service';
 import { EmployeeService } from 'src/app/services/employee/employee.service';
 import { FarmService } from 'src/app/services/farm/farm.service';
 import { AlertService } from 'src/app/shared/alert/alert.service';
@@ -34,7 +33,8 @@ export class EmployeeFormComponent implements OnInit {
     private employeeService: EmployeeService,
     private farmService: FarmService,
     private alertService: AlertService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -131,7 +131,7 @@ export class EmployeeFormComponent implements OnInit {
   saveNewEmployee() {
     if (this.employeeForm.invalid) {
       this.formSended = false;
-      this.alertService.showError(
+      this.showError(
         'Erro',
         'Existem campos inválidos no formulário.'
       );
@@ -140,7 +140,7 @@ export class EmployeeFormComponent implements OnInit {
 
     if (this.cpf.errors?.['pattern']) {
       this.formSended = false;
-      this.alertService.showError(
+      this.showError(
         'Erro',
         'O formato do CPF informado não é valido! Verifique.'
       );
@@ -149,7 +149,7 @@ export class EmployeeFormComponent implements OnInit {
 
     if (this.telephoneNumber.errors?.['pattern']) {
       this.formSended = false;
-      this.alertService.showError(
+      this.showError(
         'Erro',
         'O formato do telefone informado não é valido! Verifique.'
       );
@@ -192,5 +192,46 @@ export class EmployeeFormComponent implements OnInit {
         this.requestFinished = true;
         this.alertService.showGenericAlert(this.alertMessage);
       });
+  }
+
+  showSucess(summary: string, messageDetail: string) {
+    this.messageService.add({
+      severity: 'sucess',
+      summary: summary,
+      detail: messageDetail,
+    });
+  }
+
+  showInfo(summary: string, messageDetail: string) {
+    this.messageService.add({
+      severity: 'info',
+      summary: summary,
+      detail: messageDetail,
+    });
+  }
+
+  showWarn(summary: string, messageDetail: string) {
+    this.messageService.add({
+      severity: 'warn',
+      summary: summary,
+      detail: messageDetail,
+    });
+  }
+
+  showError(summary: string, messageDetail: string) {
+    this.messageService.add({
+      severity: 'error',
+      summary: summary,
+      detail: messageDetail,
+    });
+  }
+
+  showCustom(severity: string, summary: string, messageDetail: string) {
+    this.messageService.add({
+      severity: severity,
+      summary: summary,
+      detail: messageDetail,
+      icon: 'pi-file',
+    });
   }
 }

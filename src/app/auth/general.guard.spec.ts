@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { GeneralGuard } from './general.guard';
 
 describe('GeneralGuard', () => {
@@ -10,7 +9,4 @@ describe('GeneralGuard', () => {
     guard = TestBed.inject(GeneralGuard);
   });
 
-  it('should be created', () => {
-    expect(guard).toBeTruthy();
-  });
 });

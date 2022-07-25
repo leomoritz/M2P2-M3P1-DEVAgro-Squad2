@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppModule } from 'src/app/app.module';
 
 import { UserNavBarComponent } from './user-nav-bar.component';
 
@@ -8,7 +10,9 @@ describe('UserNavBarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserNavBarComponent ]
+      declarations: [ UserNavBarComponent ],
+      imports: [AppModule],
+      providers: [ HttpClient ]
     })
     .compileComponents();
   });
@@ -19,7 +23,5 @@ describe('UserNavBarComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+
 });

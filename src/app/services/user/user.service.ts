@@ -6,7 +6,7 @@ import { API_BASE } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class UserServiceService {
+export class UserService {
 
   users!: any;
   api: string = `${API_BASE}/company/list`;

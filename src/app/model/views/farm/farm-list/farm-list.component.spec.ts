@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppModule } from 'src/app/app.module';
 import { FarmListComponent } from './farm-list.component';
 
 describe('FarmListComponent', () => {
@@ -7,7 +9,9 @@ describe('FarmListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FarmListComponent ]
+      declarations: [ FarmListComponent ],
+      imports: [AppModule],
+      providers: [HttpClient]
     })
     .compileComponents();
   });
@@ -18,7 +22,4 @@ describe('FarmListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });
